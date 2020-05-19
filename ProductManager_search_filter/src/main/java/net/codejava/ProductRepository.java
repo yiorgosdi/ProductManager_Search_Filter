@@ -12,7 +12,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 			+ " OR p.madein LIKE %?1% "
 			) */  
 	@Query("Select p FROM Product p WHERE "
-			+ "CONCAT(p.id, p.name, p.brand, p.name, p.price)"
+			+ "CONCAT(p.id, p.name, p.brand, p.name, p.price)"  // CONCAT() function adds two or more strings together.
 			+ "LIKE %?1%") 			
 	public List<Product> findAll(String keyword); 
 }
