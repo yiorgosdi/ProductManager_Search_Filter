@@ -2,67 +2,64 @@
 <!-- http://localhost:8079/ -->
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8"/>
+<meta charset="utf-8" />
 <title>Product Manager</title>
 </head>
 <body>
 
-<div align="center">
-    
-    <div>
-    <h1>Product Manager</h1>
-    <a href="new">Create New Product</a>
-    </div>  
-    
-    <div>&nbsp;</div>
-    
-    <div>
-    	<form th:action="@{/}">
-    	Filter: <input type="text" name="keyword" th:value="${keyword}" required />     
-    	&nbsp; 
-    	<input type="submit" value="Search" />	
-    	&nbsp; 
-    	<input type="button" value="Clear" onclick="clearFilter()" /> 
-    	</form> 
-    </div>
-    
-    <div>&nbsp;</div>
-        
-    <div>
-    <table border="1" cellpadding="10">
-        <thead>
-            <tr>
-                <th>Product ID</th>
-                <th>Name</th>
-                <th>Brand</th>
-                <th>Made In</th>
-                <th>Price</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="product : ${listProducts}">
-                <td th:text="${product.id}">Product ID</td>
-                <td th:text="${product.name}">Name</td>
-                <td th:text="${product.brand}">Brand</td>
-                <td th:text="${product.madein}">Made in</td>
-                <td th:text="${product.price}">Price</td>
-                <td>
-                    <a th:href="@{'/edit/' + ${product.id}}">Edit</a>
-                 	&nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/delete/' + ${product.id}}">Delete</a>     
-                </td>                 
-              </tr>
-        </tbody>
-    </table>
-    </div>
-    <script type="text/javascript"> 
+	<div align="center">
+
+		<div>
+			<h1>Product Manager</h1>
+			<a href="new">Create New Product</a>
+		</div>
+
+		<div>&nbsp;</div>
+
+		<div>
+			<form th:action="@{/}">
+				Filter: <input type="text" name="keyword" th:value="${keyword}"
+					required /> &nbsp; <input type="submit" value="Search" /> &nbsp;
+				<input type="button" value="Clear" onclick="clearFilter()" />
+			</form>
+		</div>
+
+		<div>&nbsp;</div>
+
+		<div>
+			<table border="1" cellpadding="10">
+				<thead>
+					<tr>
+						<th>Product ID</th>
+						<th>Name</th>
+						<th>Brand</th>
+						<th>Made In</th>
+						<th>Price</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="product : ${listProducts}">
+						<td th:text="${product.id}">Product ID</td>
+						<td th:text="${product.name}">Name</td>
+						<td th:text="${product.brand}">Brand</td>
+						<td th:text="${product.madein}">Made in</td>
+						<td th:text="${product.price}">Price</td>
+						<td><a th:href="@{'/edit/' + ${product.id}}">Edit</a>
+							&nbsp;&nbsp;&nbsp; <a th:href="@{'/delete/' + ${product.id}}">Delete</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<script type="text/javascript"> 
     function clearFilter() {
     	window.location = "/"; 
     }
     </script>
-</div>   
+	</div>
 </body>
 </html>
